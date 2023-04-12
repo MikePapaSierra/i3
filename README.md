@@ -1,2 +1,2 @@
 # i3
-i3 configuration
+i3 window mamager configuration 

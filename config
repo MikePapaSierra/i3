@@ -1,0 +1,170 @@
+# i3 config file (v4)
+
+set $mod Mod4
+
+# Font for window titles and bar
+font pango:SF Pro Display Medium 8
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec kitty 
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# Focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Moving windows
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split modes
+bindsym $mod+Ctrl+h split h
+bindsym $mod+Ctrl+v split v
+bindsym $mod+e layout toggle split
+
+# Fullscreen
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed)
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+
+# toggle tiling / floating
+bindsym $mod+b floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+Shift+f focus mode_toggle
+
+# switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Resize
+mode "resize" {
+    # arrow keys
+    bindsym h resize shrink   width   10 px or 4 ppt
+    bindsym j resize grow     height  10 px or 4 ppt
+    bindsym k resize shrink   height  10 px or 4 ppt
+    bindsym l resize grow     width   10 px or 4 ppt
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Add DP-1 monitor when connected
+bindsym $mod+m exec --no-startup-id xrandr --output DP-1 --mode 3840x2160 --left-of LVDS-1 && nitrogen --restore
+bindsym $mod+n exec --no-startup-id xrandr --output DP-1 --off && nitrogen --restore
+
+# Gaps size
+gaps inner 12
+gaps outer 0
+
+# Options
+popup_during_fullscreen leave_fullscreen
+workspace_auto_back_and_forth no
+
+# Move worspace on left or right screen
+bindsym $mod+Shift+j move workspace to output down
+bindsym $mod+Shift+k move workspace to output up
+bindsym $mod+Shift+h move workspace to output left
+bindsym $mod+Shift+l move workspace to output right
+
+# Wallpaper
+exec_always --no-startup-id "nitrogen --restore"
+bindsym $mod+Shift+t exec --no-startup-id "nitrogen --restore"
+
+# Num Lock
+exec_always --no-startup-id  bash -c "if xset q | grep -q 'Num Lock: *off'; then xdotool key Num_Lock; fi"
+
+# Notifications
+exec_always --no-startup-id "pkill dunst; dunst -config ~/.config/dunst/dunstrc"
+
+# Network applet
+exec --no-startup-id "/usr/bin/nm-applet"
+
+# Use rofi, not dmenu
+bindsym $mod+space exec --no-startup-id "rofi -show drun -theme dracula.rasi"
+bindsym $mod+Shift+e exec --no-startup-id "rofi -show emoji -theme dracula.rasi"
+bindsym $mod+Shift+c exec --no-startup-id "rofi -show calc -theme dracula.rasi"
+bindsym $mod+Shift+o exec --no-startup-id "rofi -show window -theme dracula.rasi"
+# TODO: Lock screen does not work
+bindsym $mod+Shift+p exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu -theme dracula.rasi"
+bindsym $mod+Shift+b exec --no-startup-id "rofi-bluetooth"
+bindsym $mod+Shift+w exec --no-startup-id "rofi-wifi-menu"
+
+# Lock
+bindsym $mod+Ctrl+l exec --no-startup-id "$HOME/.config/i3/lock.sh"
+
+# No border
+for_window [class="^.*"] border pixel 1
+new_window none
+# https://gist.github.com/lirenlin/9892945
+#default_border pixel 1
+#default_floating_border pixel 1
+
+# Screenshot
+bindsym Print exec --no-startup-id "flameshot gui -p ~/Screenshots"
+
+# Settings
+bindsym $mod+c exec "gnome-control-center"
+bindsym $mod+w exec "gnome-control-center wifi"
+
+# Assign workspaces to output
+# TODO: This still isn't working for some reason
+workspace 1 output LVDS-1 DP-1
+workspace 2 output LVDS-1 DP-1
+workspace 3 output LVDS-1 DP-1
+workspace 4 output LVDS-1 DP-1
+workspace 5 output DP-1 LVDS-1
+workspace 6 output DP-1 LVDS-1
+workspace 7 output DP-1 LVDS-1
+workspace 8 output DP-1 LVDS-1
+
+for_window [window_role="pop-up"] floating enable
+for_window [class="floating_window"] floating enable
+
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
+client.background       #F8F8F2
+
+# Polybar configuration
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# Picom window compositor - this could be enabled on better hardware
+# Compton should be disabled
+#exec_always picom -f
