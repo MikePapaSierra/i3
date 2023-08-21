@@ -168,4 +168,4 @@ exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
 
 # Picom window compositor - this could be enabled on better hardware
 # Compton should be disabled
-#exec_always picom -f
+exec_always picom -f
