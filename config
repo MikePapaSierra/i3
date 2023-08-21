@@ -113,12 +113,12 @@ exec_always --no-startup-id "pkill dunst; dunst -config ~/.config/dunst/dunstrc"
 exec --no-startup-id "/usr/bin/nm-applet"
 
 # Use rofi, not dmenu
-bindsym $mod+space exec --no-startup-id "rofi -show drun -theme dracula.rasi"
-bindsym $mod+Shift+e exec --no-startup-id "rofi -show emoji -theme dracula.rasi"
-bindsym $mod+Shift+c exec --no-startup-id "rofi -show calc -theme dracula.rasi"
-bindsym $mod+Shift+o exec --no-startup-id "rofi -show window -theme dracula.rasi"
+bindsym $mod+space exec --no-startup-id "rofi -show drun"
+bindsym $mod+Shift+e exec --no-startup-id "rofi -show emoji"
+bindsym $mod+Shift+c exec --no-startup-id "rofi -show calc"
+bindsym $mod+Shift+o exec --no-startup-id "rofi -show window"
 # TODO: Lock screen does not work
-bindsym $mod+Shift+p exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu -theme dracula.rasi"
+bindsym $mod+Shift+p exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu"
 bindsym $mod+Shift+b exec --no-startup-id "rofi-bluetooth"
 bindsym $mod+Shift+w exec --no-startup-id "rofi-wifi-menu"
 
