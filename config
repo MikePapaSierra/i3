@@ -110,7 +110,7 @@ bindsym $mod+space exec --no-startup-id "rofi -show drun"
 bindsym $mod+Shift+e exec --no-startup-id "rofi -show emoji"
 bindsym $mod+Shift+c exec --no-startup-id "rofi -show calc"
 bindsym $mod+Shift+o exec --no-startup-id "rofi -show window"
-# TODO: Lock screen does not work
+# TODO: Lock screen does not work - probaly because of the lock.sh script
 bindsym $mod+Shift+p exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu"
 bindsym $mod+Shift+b exec --no-startup-id "rofi-bluetooth"
 bindsym $mod+Shift+w exec --no-startup-id "rofi-wifi-menu"
