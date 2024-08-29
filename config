@@ -103,9 +103,6 @@ bindsym $mod+Shift+l move workspace to output right
 exec_always --no-startup-id "nitrogen --restore"
 bindsym $mod+Shift+t exec --no-startup-id "nitrogen --restore"
 
-# Num Lock
-exec_always --no-startup-id  bash -c "if xset q | grep -q 'Num Lock: *off'; then xdotool key Num_Lock; fi"
-
 # Notifications
 exec_always --no-startup-id "pkill dunst; dunst -config ~/.config/dunst/dunstrc"
 
