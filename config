@@ -81,10 +81,6 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# Add HDMI-0 monitor when connected
-bindsym $mod+m exec --no-startup-id xrandr --output HDMI-1 --mode 3840x2160 --left-of HDMI-0 && nitrogen --restore
-bindsym $mod+n exec --no-startup-id xrandr --output HDMI-1 --off && nitrogen --restore
-
 # Gaps size
 gaps inner 12
 gaps outer 0
