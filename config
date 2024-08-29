@@ -133,10 +133,6 @@ new_window none
 # Screenshot
 bindsym Print exec --no-startup-id "flameshot gui -p ~/Screenshots"
 
-# Settings
-bindsym $mod+c exec "gnome-control-center"
-bindsym $mod+w exec "gnome-control-center wifi"
-
 # Assign workspaces to output
 # TODO: This still isn't working for some reason
 workspace 1 output HDMI-0 HDMI-1
