@@ -114,7 +114,6 @@ bindsym $mod+Shift+o exec --no-startup-id "rofi -show window"
 bindsym $mod+Shift+p exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu"
 bindsym $mod+Shift+b exec --no-startup-id "rofi-bluetooth"
 bindsym $mod+Shift+w exec --no-startup-id "rofi-wifi-menu"
-bindsym $mod+Shift+s exec --no-startup-id "rofi-spotify"
 
 # Lock
 bindsym $mod+Ctrl+q exec --no-startup-id "$HOME/.config/i3/lock.sh"
