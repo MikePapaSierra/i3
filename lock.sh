@@ -1,13 +1,14 @@
-# This was found in the Internet and modified to match Dracula theme.
+# i3lock script with Catppuccin Mocha theme
 
 #!/bin/sh
 
-BLANK='#282a36'
-CLEAR='#44475a'
-DEFAULT='#bd93f9'
-TEXT='#f8f8f2'
-WRONG='#ff79c6'
-VERIFYING='#9afcb3'
+# Catppuccin Mocha colors
+BLANK='#1e1e2e'        # base
+CLEAR='#313244'        # surface0
+DEFAULT='#b4befe'      # lavender
+TEXT='#cdd6f4'         # text
+WRONG='#f38ba8'        # red
+VERIFYING='#a6e3a1'    # green
 
 i3lock \
 --insidever-color=$CLEAR     \
