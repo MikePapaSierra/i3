@@ -8,7 +8,7 @@
 |------------|--------|
 | `$mod+Return` | Open terminal (kitty) |
 | `$mod+Shift+Return` | Open floating terminal |
-| `$mod+r` | Application launcher (rofi drun) |
+| `$mod+space` | Application launcher (rofi drun) |
 | `$mod+Tab` | Window switcher (rofi window) |
 
 ### Rofi Modules
@@ -36,7 +36,7 @@
 | `$mod+Shift+q` | Kill focused window (alternative) |
 | `$mod+f` | Toggle fullscreen |
 | `$mod+Shift+space` | Toggle floating mode |
-| `$mod+space` | Toggle focus tiling/floating |
+| `$mod+r` | Toggle focus tiling/floating |
 
 ### Container Management
 | Keybinding | Action |
@@ -139,7 +139,7 @@
 - All workspaces are universal - use for any applications
 
 ### Common Workflows
-1. **Open app launcher**: `$mod+r`
+1. **Open app launcher**: `$mod+space`
 2. **Quick terminal**: `$mod+Return`
 3. **Switch workspace**: `$mod+[1-8]`
 4. **Move window and follow**: `$mod+Ctrl+[1-8]`
@@ -148,7 +148,7 @@
 
 ### Floating Windows
 - Toggle floating: `$mod+Shift+space`
-- Focus floating/tiling: `$mod+space`
+- Focus floating/tiling: `$mod+r`
 - Some windows automatically float (dialogs, popups, media players)
 
 ---

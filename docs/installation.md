@@ -33,7 +33,7 @@ sudo pacman -S clipit udiskie
 ## Verification
 
 Test these key functions:
-- `$mod+r` - Application launcher should open
+- `$mod+space` - Application launcher should open
 - `$mod+1` - Should switch to workspace 1
 - `$mod+Return` - Should open terminal
 - `$mod+Ctrl+q` - Should lock screen

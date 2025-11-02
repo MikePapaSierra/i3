@@ -13,7 +13,7 @@ Modern i3 window manager configuration featuring Catppuccin Mocha theme, VictorM
 ## Quick Start
 
 1. **Restart i3**: `$mod+Shift+r` (Super+Shift+R)
-2. **App launcher**: `$mod+r`
+2. **App launcher**: `$mod+space`
 3. **Terminal**: `$mod+Return`
 4. **Window switcher**: `$mod+Tab`
 
@@ -23,7 +23,7 @@ Modern i3 window manager configuration featuring Catppuccin Mocha theme, VictorM
 
 ### Applications
 - `$mod+Return` - Terminal (kitty)
-- `$mod+r` - Application launcher
+- `$mod+space` - Application launcher
 - `$mod+Tab` - Window switcher
 - `$mod+Shift+f` - Firefox
 - `$mod+Shift+v` - VS Code

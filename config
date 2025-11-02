@@ -89,7 +89,7 @@ bindsym $mod+t layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # Change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+r focus mode_toggle
 
 # Focus parent/child container
 bindsym $mod+a focus parent
@@ -229,7 +229,7 @@ exec --no-startup-id udiskie --tray
 exec --no-startup-id clipit
 
 # ===== APPLICATION LAUNCHER (ROFI) =====
-bindsym $mod+r exec --no-startup-id "rofi -show drun"
+bindsym $mod+space exec --no-startup-id "rofi -show drun"
 bindsym $mod+Tab exec --no-startup-id "rofi -show window"
 bindsym $mod+Shift+e exec --no-startup-id "rofi -show emoji"
 bindsym $mod+Shift+c exec --no-startup-id "rofi -show calc"
