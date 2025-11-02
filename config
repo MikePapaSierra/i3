@@ -1,162 +1,13 @@
 # i3 config file (v4)
+# Optimized configuration with Catppuccin theme and VictorMono font
 
+# Set modifier key (Super/Windows key)
 set $mod Mod4
 
-# Font for window titles and bar
-font pango:SF Pro Display Medium 8
+# Font for window titles and bar - VictorMono Nerd Font Medium
+font pango:VictorMono NFM Medium 9
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# start a terminal
-bindsym $mod+Return exec kitty
-
-# kill focused window
-bindsym $mod+Shift+q kill
-
-# Focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-
-# Moving windows
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
-# Split modes
-bindsym $mod+o split h
-bindsym $mod+p split v
-bindsym $mod+e layout toggle split
-
-# Fullscreen
-bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed)
-bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
-
-# toggle tiling / floating
-bindsym $mod+b floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+Shift+f focus mode_toggle
-
-# switch to workspace
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-
-# Resize
-mode "resize" {
-    # arrow keys
-    bindsym h resize shrink   width   10 px or 4 ppt
-    bindsym j resize grow     height  10 px or 4 ppt
-    bindsym k resize shrink   height  10 px or 4 ppt
-    bindsym l resize grow     width   10 px or 4 ppt
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
-
-# Gaps size
-gaps inner 12
-gaps outer 0
-
-# Options
-popup_during_fullscreen leave_fullscreen
-workspace_auto_back_and_forth no
-
-# Move worspace on left or right screen
-bindsym $mod+Ctrl+j move workspace to output down
-bindsym $mod+Ctrl+k move workspace to output up
-bindsym $mod+Ctrl+h move workspace to output left
-bindsym $mod+Ctrl+l move workspace to output right
-
-# Wallpaper
-exec_always --no-startup-id "nitrogen --restore"
-bindsym $mod+Shift+t exec --no-startup-id "nitrogen --restore"
-
-# Notifications
-exec_always --no-startup-id "pkill dunst; dunst -config ~/.config/dunst/dunstrc"
-
-# Network applet
-exec --no-startup-id "/usr/bin/nm-applet"
-
-# Use rofi, not dmenu
-bindsym $mod+space exec --no-startup-id "rofi -show drun"
-bindsym $mod+Shift+e exec --no-startup-id "rofi -show emoji"
-bindsym $mod+Shift+c exec --no-startup-id "rofi -show calc"
-bindsym $mod+Shift+o exec --no-startup-id "rofi -show window"
-# TODO: Lock screen does not work - probaly because of the lock.sh script
-bindsym $mod+Shift+p exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu"
-bindsym $mod+Shift+b exec --no-startup-id "rofi-bluetooth"
-bindsym $mod+Shift+w exec --no-startup-id "rofi-wifi-menu"
-
-# Lock
-bindsym $mod+Ctrl+q exec --no-startup-id "$HOME/.config/i3/lock.sh"
-
-# No border
-for_window [class="^.*"] border pixel 1
-new_window none
-# https://gist.github.com/lirenlin/9892945
-#default_border pixel 1
-#default_floating_border pixel 1
-
-# Screenshot
-bindsym Print exec --no-startup-id "flameshot gui -p ~/Screenshots"
-
-# Assign workspaces to output
-workspace 1 output HDMI-0 HDMI-1
-workspace 2 output HDMI-0 HDMI-1
-workspace 3 output HDMI-0 HDMI-1
-workspace 4 output HDMI-0 HDMI-1
-workspace 5 output HDMI-1 HDMI-0 
-workspace 6 output HDMI-1 HDMI-0 
-workspace 7 output HDMI-1 HDMI-0 
-workspace 8 output HDMI-1 HDMI-0 
-
-for_window [window_role="pop-up"] floating enable
-for_window [class="floating_window"] floating enable
-
-# target                 title     bg    text   indicator  border
-client.focused           $lavender $base $text  $rosewater $lavender
-client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
-client.unfocused         $overlay0 $base $text  $rosewater $overlay0
-client.urgent            $peach    $base $peach $overlay0  $peach
-client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
-client.background        $base
-
-# Polybar configuration
-exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
-
-# Picom window compositor - this could be enabled on better hardware
-# Compton should be disabled
-exec_always picom -f
-
-# Catppuccin Mocha color theme
+# ===== CATPPUCCIN MOCHA COLOR THEME =====
 set $rosewater #f5e0dc
 set $flamingo #f2cdcd
 set $pink #f5c2e7
@@ -183,3 +34,259 @@ set $surface0 #313244
 set $base #1e1e2e
 set $mantle #181825
 set $crust #11111b
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# ===== APPLICATION SHORTCUTS =====
+# Terminal
+bindsym $mod+Return exec kitty
+bindsym $mod+Shift+Return exec kitty --class floating_window
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+#n ===== WINDOW NAVIGATION =====
+# Focus (vim-like keys)
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Focus (arrow keys)
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Moving windows (vim-like keys)
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Moving windows (arrow keys)
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# ===== LAYOUT AND CONTAINER MANAGEMENT =====
+# Split modes
+bindsym $mod+o split h
+bindsym $mod+p split v
+bindsym $mod+e layout toggle split
+
+# Fullscreen mode
+bindsym $mod+f fullscreen toggle
+
+# Container layout modes
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+t layout toggle split
+
+# Toggle floating mode
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Focus parent/child container
+bindsym $mod+a focus parent
+bindsym $mod+d focus child
+
+# ===== WORKSPACE MANAGEMENT =====
+# Define universal workspace names (no dedicated purposes)
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+
+# Move container to workspace and follow
+bindsym $mod+Ctrl+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8; workspace $ws8
+
+# ===== SYSTEM CONTROLS =====
+# Restart i3 inplace (preserves your layout/session)
+bindsym $mod+Shift+r restart
+
+# Exit i3 (logs you out of your X session)
+bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# Lock screen
+bindsym $mod+Ctrl+q exec --no-startup-id "$HOME/.config/i3/lock.sh"
+
+# Media keys
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# Brightness controls
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
+# ===== RESIZE MODE =====
+mode "resize" {
+    # Vim-like keys
+    bindsym h resize shrink width 10 px or 4 ppt
+    bindsym j resize grow height 10 px or 4 ppt
+    bindsym k resize shrink height 10 px or 4 ppt
+    bindsym l resize grow width 10 px or 4 ppt
+
+    # Arrow keys
+    bindsym Left resize shrink width 10 px or 4 ppt
+    bindsym Down resize grow height 10 px or 4 ppt
+    bindsym Up resize shrink height 10 px or 4 ppt
+    bindsym Right resize grow width 10 px or 4 ppt
+
+    # Fine-grained resizing
+    bindsym Shift+h resize shrink width 1 px or 1 ppt
+    bindsym Shift+j resize grow height 1 px or 1 ppt
+    bindsym Shift+k resize shrink height 1 px or 1 ppt
+    bindsym Shift+l resize grow width 1 px or 1 ppt
+
+    # Exit resize mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+Ctrl+r mode "default"
+}
+bindsym $mod+Ctrl+r mode "resize"
+
+# ===== APPEARANCE AND GAPS =====
+# Always show gaps (disable smart gaps for consistent spacing)
+smart_gaps off
+smart_borders on
+
+# Gap sizes
+# Space between windows
+gaps inner 6
+# Space between windows and screen edges
+gaps outer 4
+
+# Gap controls
+bindsym $mod+plus gaps inner current plus 2
+bindsym $mod+minus gaps inner current minus 2
+bindsym $mod+Shift+plus gaps outer current plus 2
+bindsym $mod+Shift+minus gaps outer current minus 2
+
+# Options
+popup_during_fullscreen leave_fullscreen
+workspace_auto_back_and_forth yes
+focus_follows_mouse yes
+
+# Move worspace on left or right screen
+bindsym $mod+Ctrl+j move workspace to output down
+bindsym $mod+Ctrl+k move workspace to output up
+bindsym $mod+Ctrl+h move workspace to output left
+bindsym $mod+Ctrl+l move workspace to output right
+
+# ===== STARTUP APPLICATIONS =====
+# Wallpaper
+exec_always --no-startup-id "nitrogen --restore"
+bindsym $mod+Shift+t exec --no-startup-id "nitrogen --restore"
+
+# Notifications
+exec_always --no-startup-id "pkill dunst; dunst -config ~/.config/dunst/dunstrc"
+
+# Network manager applet
+exec --no-startup-id nm-applet
+
+# Auto-mount removable media
+exec --no-startup-id udiskie --tray
+
+# Clipboard manager
+exec --no-startup-id clipit
+
+# ===== APPLICATION LAUNCHER (ROFI) =====
+bindsym $mod+r exec --no-startup-id "rofi -show drun"
+bindsym $mod+Tab exec --no-startup-id "rofi -show window"
+bindsym $mod+Shift+e exec --no-startup-id "rofi -show emoji"
+bindsym $mod+Shift+c exec --no-startup-id "rofi -show calc"
+bindsym $mod+Shift+p exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu"
+bindsym $mod+Shift+b exec --no-startup-id "rofi-bluetooth"
+bindsym $mod+Shift+w exec --no-startup-id "rofi-wifi-menu"
+
+# ===== WINDOW RULES AND APPEARANCE =====
+# Border settings
+default_border pixel 2
+default_floating_border pixel 2
+hide_edge_borders smart
+
+# Floating window rules
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [class="floating_window"] floating enable
+
+# Application-specific floating rules
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Nm-connection-editor"] floating enable
+for_window [class="feh"] floating enable
+for_window [class="mpv"] floating enable
+for_window [class="Arandr"] floating enable
+for_window [title="About Mozilla Firefox"] floating enable
+
+# ===== SCREENSHOT CONTROLS =====
+bindsym Print exec --no-startup-id "flameshot gui -p ~/Screenshots"
+bindsym $mod+Print exec --no-startup-id "flameshot full -p ~/Screenshots"
+bindsym Shift+Print exec --no-startup-id "flameshot screen -p ~/Screenshots"
+
+# ===== MULTI-MONITOR SETUP =====
+# Assign workspaces to outputs (monitors)
+workspace $ws1 output HDMI-0 HDMI-1
+workspace $ws2 output HDMI-0 HDMI-1
+workspace $ws3 output HDMI-0 HDMI-1
+workspace $ws4 output HDMI-0 HDMI-1
+workspace $ws5 output HDMI-1 HDMI-0
+workspace $ws6 output HDMI-1 HDMI-0
+workspace $ws7 output HDMI-1 HDMI-0
+workspace $ws8 output HDMI-1 HDMI-0
+
+# target                 title     bg    text   indicator  border
+client.focused           $lavender $base $text  $rosewater $lavender
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
+
+# Polybar (status bar)
+exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
+
+# Picom compositor (window effects with better performance)
+exec_always --no-startup-id "pkill picom; picom -b"
